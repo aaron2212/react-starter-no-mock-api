@@ -1,6 +1,20 @@
+# React Starter
+
 ## Description
 
 A simple React starter project that contains all the essential bare bones to get a React applicaton up and running, as well some extra code and packages to simplify the process of starting a new React project.
+
+## Prerequisites
+
+To build and run this project, the following are required
+ 
+- [NodeJS](https://nodejs.org)
+- [Yarn](https://yarnpkg.com)
+- Any text editor, such as [Visual Studio Code](https://code.visualstudio.com) or [Atom](https://atom.io)
+
+The following software is optional 
+
+- [Git](git-scm.com) (for cloning this repo)
 
 ## Getting Started
 
@@ -99,6 +113,38 @@ If you don't want to use any of these packages, you can do `yarn remove <package
 - A constants file `const.js` for storing constants used throughout the application
 - A theme file `theme.js` for theming
 
-### Note
+## Coding style
+
+This project is only a starter project and doesn't enforce any coding conventions or coding styles upon the developer. However, if you do want to follow the coding styles used in this project, they are as follows
+
+### Components
+- All components live under `src/components`, and their file name is joined by a dash wherever there would normally be a space between words
+- All components are functional components instead of class based components
+- All components are named exports and not default exports, and the name of the component is the same as the name of the file, but written in Upper Camel Case, also known as PascalCase
+- Components that are used in more than one place live under `src/components/shared` 
+
+### Project structure
+- All API related code lives under `src/api`
+- All helper classes and methods live under `src/helpers`
+- All utility classes and methods lives under `src/utils`
+- All constants used throughout the application are stored in `const.js`
+- All theming variabled are stored in `theme.js`
+
+### General coding style
+- Single quotes should be used instead double quotes, except for HTML attribute, in which case double quotes are preferred
+- The last item in an array of objects or the last key in an object should end with a `,`, for example
+```javascript
+    const links = [
+        { href: 'https://google.com', text: 'Google' },
+        { href: 'https://youtube.com', text: 'YouTube' },
+        { href: 'https://reddit.com', text: 'Reddit' },
+    ];
+```
+- All statements should end with a `;`
+- ES6 arrow functions should be used over traditional JavaScript functions where possible
+- With regards to functions and classes, the opening curly brace (`{`) should be on the same line as the name of the class or function, and the closing curly brace (`}`) should be on the line following the last line of code in that class or function
+- If an if statement and an else statement both have a single line of code each, then no curly braces should be used. However, if either the if statement or the else statement has multiple lines of code, curly braces should be used for both
+
+## Note
 
 This project does not include a mock API, so all responses received will be from a REST service, and not mock data.
