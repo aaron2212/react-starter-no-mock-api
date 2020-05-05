@@ -1,68 +1,95 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple React starter app that contains all the essential bare bones to get a React app up and running, as well some extra stuff to simplify the process of starting a new React project.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+To get started, run the following commands
 
-### `yarn start`
+1. `git clone https://github.com/aaron2212/react-starter-no-mock-api`
+2. `cd react-starter-no-mock-api`
+3. `yarn install`
+4. `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Scripts
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The following scripts are available to use:
 
-### `yarn test`
+    `start` - starts the development server
+    `test` - runs all unit tests
+    `build` - creates a production build of the React application
+    `eject`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Directory Structure
 
-### `yarn build`
+```
+public/
+src/
+    api/
+       api-service.js  An API service for making API calls to the backend
+       auth-service.js An authentication service for things like login and register
+       http-client.js  An HTTP client for making HTTP requests
+       index.js     Exports for all files in this directory
+    components/
+        pages/
+            index.js          Exports for all files in this director
+            landing-page.js   The landing page
+            not-found-page.js A page showing a 404 error
+        shared/
+            forms/
+                components/
+                    field.js            A wrapper around form elements
+                    index.js            Exports for all files in this directory
+                    validation-error.js For display an input validation error
+                controls/
+                    index.js    Exports for all files in this directory
+                    input.js    A standard form input
+                    select.js A select input
+                    textarea.js A textarea input
+                form.js An example form using formik
+                index.js
+            index.js Exports for all files in this directory
+        themed/ Themed components allow for easily changing the site of the theme without changing every component
+    helpers/
+    utils/ Utility methods and classes
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Included packages
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+This project includes extra packages that are useful when starting a new React application, but are not included in the initial `create-react-app` project. To remove them, you can do `yarn remove <package-name>`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `formik` - every web application uses forms. `formik` simplifies the process of working with HTML forms
+- `react-router-dom` - the starter project comes with routing set up
+- `styled-components` -
+- `yup` - this package goes hand-in-hand with `formik` to provide a validation schema for HTML forms
 
-### `yarn eject`
+### Additional packages that could be useful
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Font Awesome
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  ```
+  yarn add @fortawesome/fontawesome-svg-core
+  yarn add @fortawesome/free-solid-svg-icons
+  yarn add @fortawesome/react-fontawesome
+  ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Bootstrap
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  ```
+  yarn add react-bootstrap
+  ```
 
-## Learn More
+- Moment
+  ```
+  yarn add moment
+  ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Additional features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- An API service and HTTP client for making API calls to a backend server
+- Helper classes for storing and retrieving JWT tokens
+- A user authentication helper class to determine the state of the user
+- A constants file `const.js` for storing constants used through the application
+- A theme file `theme.js` for theming
 
-### Code Splitting
+## Note
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project does not include a mock API
