@@ -1,3 +1,5 @@
+import { API_URL } from 'settings';
+
 export class HttpClient {
   static async makeRequest(request) {
     const response = await fetch(request);
@@ -12,6 +14,35 @@ export class HttpClient {
       return JSON.parse(text);
     } catch {
       return text;
+    }
+  }
+
+  static async doRequest(
+    method,
+    url,
+    body = null,
+    headers = this.headers,
+    addTrailingSlash = true
+  ) {
+    if (url.startsWith('/')) url = url.substring(1, url.length);
+    if (!url.endsWith('/') && addTrailingSlash) url += '/';
+
+    const fullUrl = `${API_URL}/${url}`;
+    method = method.toUpperCase();
+
+    switch (method) {
+      case 'GET':
+        return await HttpClient.get(fullUrl, headers);
+      case 'POST':
+        return await HttpClient.post(fullUrl, headers, body);
+      case 'PUT':
+        return await HttpClient.put(fullUrl, headers, body);
+      case 'PATCH':
+        return await HttpClient.patch(fullUrl, headers, body);
+      case 'DELETE':
+        return await HttpClient.delete(fullUrl, headers);
+      default:
+        return;
     }
   }
 

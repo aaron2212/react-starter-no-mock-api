@@ -1,14 +1,14 @@
-import { LOCALSTORAGE_TOKEN_KEY } from 'settings';
+import { LOCAL_STORAGE_TOKEN_KEY } from 'settings';
 
 export class SessionStorageHelper {
-  static storeJwt(jsonWebToken) {
-    const jwtData = this.stringifySessionData(jsonWebToken);
+  static storeJwt(jwt) {
+    const jwtData = JSON.stringify(jwt);
 
-    localStorage.setItem(LOCALSTORAGE_TOKEN_KEY, jwtData);
+    localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, jwtData);
   }
 
   static getJwt() {
-    const storedJwt = localStorage.getItem(LOCALSTORAGE_TOKEN_KEY);
+    const storedJwt = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
 
     if (!storedJwt) {
       return {
@@ -18,7 +18,7 @@ export class SessionStorageHelper {
     }
 
     try {
-      const currentJwt = this.parseSessionData(storedJwt);
+      const currentJwt = JSON.parse(storedJwt);
 
       return currentJwt;
     } catch (err) {
@@ -26,15 +26,7 @@ export class SessionStorageHelper {
     }
   }
 
-  static parseSessionData(data) {
-    return JSON.parse(data);
-  }
-
-  static stringifySessionData(data) {
-    return JSON.stringify(data);
-  }
-
   static deleteJwt() {
-    localStorage.removeItem(LOCALSTORAGE_TOKEN_KEY);
+    localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
   }
 }

@@ -4,7 +4,7 @@ import { Page } from './page';
 
 export const NotFoundPage = () => {
   return (
-    <Page showButton={false}>
+    <Page>
       <h1>404 Not Found</h1>
     </Page>
   );

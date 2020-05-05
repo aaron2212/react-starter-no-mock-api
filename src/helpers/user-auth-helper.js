@@ -5,7 +5,7 @@ export class UserAuthHelper {
   static getUser = () => {
     const token = SessionStorageHelper.getJwt();
 
-    if (token === null || token.token === null) return null;
+    if (!token || !token.token) return null;
 
     return JwtTokenHelper.getJwtObject(token.access);
   };
@@ -21,7 +21,8 @@ export class UserAuthHelper {
   static getUserId = () => {
     const user = this.getUser();
 
-    return user ? user.user_id : null;
+    return user ? user.userId : null;
   };
+
   static logoutUser = () => SessionStorageHelper.deleteJwt();
 }
