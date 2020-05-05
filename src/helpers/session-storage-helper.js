@@ -1,12 +1,14 @@
+import { LOCALSTORAGE_TOKEN_KEY } from 'settings';
+
 export class SessionStorageHelper {
   static storeJwt(jsonWebToken) {
     const jwtData = this.stringifySessionData(jsonWebToken);
 
-    localStorage.setItem('token', jwtData);
+    localStorage.setItem(LOCALSTORAGE_TOKEN_KEY, jwtData);
   }
 
   static getJwt() {
-    const storedJwt = localStorage.getItem('token');
+    const storedJwt = localStorage.getItem(LOCALSTORAGE_TOKEN_KEY);
 
     if (!storedJwt) {
       return {
@@ -33,6 +35,6 @@ export class SessionStorageHelper {
   }
 
   static deleteJwt() {
-    localStorage.removeItem('token');
+    localStorage.removeItem(LOCALSTORAGE_TOKEN_KEY);
   }
 }

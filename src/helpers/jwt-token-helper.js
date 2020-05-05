@@ -15,20 +15,4 @@ export class JwtTokenHelper {
       return null;
     }
   }
-
-  static jwtExpired(token) {
-    const jwtObject = this.getJwtObject(token, false);
-
-    if (!jwtObject) {
-      return true;
-    }
-
-    // Initialize date to unix epoch time with 'new Date(0)'
-    // and set to 'jwtObject.exp' before comparing
-    const currentTime = new Date().getTime();
-    const expirationDate = new Date(0);
-    expirationDate.setUTCSeconds(jwtObject.exp);
-
-    return currentTime >= expirationDate.getTime();
-  }
 }
