@@ -1,4 +1,5 @@
 import { SessionStorageHelper } from 'helpers';
+import { HttpClient } from './http-client';
 
 export class ApiService {
   headers = {
@@ -9,4 +10,8 @@ export class ApiService {
 
   static instance = new this();
   static getInstance = () => this.instance;
+
+  clients = {
+    getAll: () => HttpClient.doRequest('GET', '/clients', null, this.headers),
+  };
 }

@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Page } from './page';
 import { Form } from 'components/shared/forms';
+import { ApiService } from 'api';
 
 export const LandingPage = () => {
   return (
